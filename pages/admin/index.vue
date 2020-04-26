@@ -10,7 +10,7 @@
         <button class="button" @click="logOut">
           LogOut
         </button>
-        <nuxt-link class="button" :to="`admin/create`" >
+        <nuxt-link class="button" :to="`create`" >
           New
         </nuxt-link>
         <table class="table is-fullwidth is-bordered">
