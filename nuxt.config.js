@@ -44,6 +44,10 @@ export default {
   /*
   ** Build configuration
   */
+  //NETLIFY DEPLOY ERROR SOLUTION _SLUG
+  generate: {
+    fallback: true
+  },
   build: {
     /*
     ** You can extend webpack config here
