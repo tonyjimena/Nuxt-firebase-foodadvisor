@@ -6,7 +6,7 @@
         <ul>
           <li>
             <nuxt-link to="/">
-              Home
+              Home..
             </nuxt-link>
           </li>
           <li class="is-active">
