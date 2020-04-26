@@ -137,7 +137,8 @@ export default {
         slug: null,
         address: null,
         city: null,
-        category: null
+        category: null,
+        likes: 0
       }
     }
   },
