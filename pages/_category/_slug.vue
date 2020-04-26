@@ -32,9 +32,9 @@
               <p>{{ restaurant.description }}</p>
             </div>
             <div class="column has-text-right">
-              <div class="button">
-                <span>{{ restaurant.likes }}</span>
-              </div>
+              <button class="button is-info" v-on:click="sumLikes">
+                {{ restaurant.likes }}
+              </button>
             </div>
           </div>
           <div class="columns">
@@ -101,6 +101,26 @@ export default {
         .catch(err => {
           console.log('Error getting documents', err)
         })
+  },
+  methods: {
+    async sumLikes(restaurant) {
+      const payload = {
+        id: restaurant.id,
+        data: {
+          likes: restaurant.likes + 1
+        }
+      }
+      const ref = db.collection('restaurants').doc(restaurant.id)
+      const response = ref.update(payload.data)
+      response.then( () => {
+          restaurant.likes++
+          //this.getDoc()
+          //this.$router.back()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
   }
   }
 </script>

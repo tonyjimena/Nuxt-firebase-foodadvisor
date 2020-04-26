@@ -24,6 +24,7 @@
               :category="restaurant.category"
               :likes="restaurant.likes"
               :image="restaurant.image"
+              v-on:onLikeButton="sumLikes(restaurant)"
               class="restaurant-card"
               v-for="(restaurant, index) in restaurants" :key="index"
             />
@@ -82,6 +83,24 @@ export default {
         .catch(err => {
           console.log('Error getting documents', err)
         })
+    },
+    async sumLikes(restaurant) {
+      const payload = {
+        id: restaurant.id,
+        data: {
+          likes: restaurant.likes + 1
+        }
+      }
+      const ref = db.collection('restaurants').doc(restaurant.id)
+      const response = ref.update(payload.data)
+      response.then( () => {
+          restaurant.likes++
+          //this.getDoc()
+          //this.$router.back()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
   }
 }
